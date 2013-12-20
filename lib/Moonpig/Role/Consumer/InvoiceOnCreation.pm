@@ -8,6 +8,8 @@ use Moonpig::Logger '$Logger';
 use Moonpig::Util qw(class);
 use MooseX::Types::Moose qw(ArrayRef);
 
+use namespace::autoclean -also => [qw(ArrayRef is_ArrayRef to_ArrayRef)];
+
 use Stick::Publisher;
 use Stick::Publisher::Publish;
 

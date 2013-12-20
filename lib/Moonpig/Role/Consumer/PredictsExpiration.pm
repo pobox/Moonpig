@@ -18,6 +18,7 @@ use Stick::Types qw(OptionalStickBool);
 requires 'estimated_lifetime'; # TimeInterval, from activation to predicted exp
 requires 'expiration_date';    # Time, predicted exp date
 
+
 publish replacement_chain_expiration_date => {
   -http_method => 'get',
   include_unpaid_charges => OptionalStickBool,

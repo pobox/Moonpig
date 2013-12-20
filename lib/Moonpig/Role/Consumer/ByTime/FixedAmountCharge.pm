@@ -7,7 +7,7 @@ use Moonpig::Logger '$Logger';
 use Moonpig::Trait::Copy;
 use Moonpig::Types qw(PositiveMillicents);
 
-use namespace::autoclean;
+use namespace::autoclean -also => [qw(PositiveMillicents is_PositiveMillicents)];
 
 with(
   'Moonpig::Role::Consumer::ByTime',

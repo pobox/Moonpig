@@ -25,7 +25,11 @@ implicit_event_handlers {
   }
 };
 
-use namespace::autoclean;
+use namespace::autoclean -also =>
+  [qw(ArrayRef is_ArrayRef to_ArrayRef Factory is_Factory to_Factory
+      PositiveMillicents is_PositiveMillicents to_PositiveMillicents
+      Str is_Str to_Str Time is_Time to_Time TimeInterval
+      is_TimeInterval to_TimeInterval)];
 
 has self_funding_credit_roles => (
   isa => ArrayRef[ Str ],

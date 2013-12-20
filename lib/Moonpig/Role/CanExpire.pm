@@ -8,7 +8,7 @@ use Moonpig::Trait::Copy;
 use Moonpig::Types qw(Time);
 use Stick::Util qw(true false);
 
-use namespace::autoclean;
+use namespace::autoclean -also => [qw(Time is_Time to_Time)];
 
 has expired_at => (
   isa => Time,

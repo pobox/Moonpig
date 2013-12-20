@@ -41,7 +41,10 @@ implicit_event_handlers {
 
 use Moonpig::Types qw(PositiveMillicents Time TimeInterval);
 
-use namespace::autoclean;
+use namespace::autoclean -also =>
+  [qw(PositiveMillicents is_PositiveMillicents to_PositiveMillicents
+      Time is_Time to_Time TimeInterval is_TimeInterval
+      to_TimeInterval)];
 
 sub now { Moonpig->env->now() }
 

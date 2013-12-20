@@ -9,7 +9,7 @@ use Moonpig::Types qw(Time);
 use Moonpig::Util qw(event);
 use MooseX::SetOnce;
 
-use namespace::autoclean;
+use namespace::autoclean -also => [qw(Time is_Time to_Time)];
 
 use Moonpig::Behavior::EventHandlers;
 implicit_event_handlers {

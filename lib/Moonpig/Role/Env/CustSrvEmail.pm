@@ -7,7 +7,7 @@ with qw(Moonpig::Role::Env Moonpig::Role::Env::EmailSender);
 use Moonpig::Types qw(Ledger);
 use Stick::Util qw(ppack);
 
-use namespace::autoclean;
+use namespace::autoclean -also => [ qw(Ledger is_Ledger) ];
 
 requires 'customer_service_from_email_address';
 requires 'customer_service_to_email_address';

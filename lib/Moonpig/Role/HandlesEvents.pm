@@ -10,7 +10,9 @@ use MooseX::Types::Moose qw(ArrayRef HashRef);
 
 use Moonpig::Behavior::EventHandlers;
 
-use namespace::autoclean;
+use namespace::autoclean -also =>
+  [qw(ArrayRef is_ArrayRef to_ArrayRef
+      HashRef is_HashRef to_HashRef)];
 
 has _event_handler_registry => (
   is   => 'ro',
