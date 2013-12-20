@@ -33,7 +33,12 @@ use Moonpig::Types qw(Ledger Millicents Time TimeInterval XID ReplacementPlan);
 use Moonpig::Util qw(class event sumof);
 
 use Moonpig::Logger '$Logger';
-use namespace::autoclean;
+
+use namespace::autoclean -also =>
+  [qw(ArrayRef is_ArrayRef to_ArrayRef Ledger is_Ledger to_Ledger
+      Millicents is_Millicents to_Millicents Time is_Time to_Time
+      TimeInterval is_TimeInterval to_TimeInterval XID is_XID to_XID
+      ReplacementPlan is_ReplacementPlan to_ReplacementPlan)];
 
 use Moonpig::Behavior::Packable;
 

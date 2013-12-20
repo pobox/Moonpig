@@ -4,6 +4,11 @@ use Moonpig::Util qw(class dollars);
 use Moonpig::Types qw(Factory  NonNegativeMillicents);
 use MooseX::Types::Moose qw(ArrayRef);
 
+use namespace::autoclean -also =>
+  [qw(ArrayRef is_ArrayRef to_ArrayRef Factory is_Factory to_Factory
+      NonNegativeMillicents is_NonNegativeMillicents
+      to_NonNegativeMillicents)];
+
 has total_charge_amount => (
   is => 'rw',
   isa => NonNegativeMillicents,

@@ -22,7 +22,10 @@ with(
 use Moonpig::Behavior::EventHandlers;
 use Moonpig::Types qw(PositiveMillicents PositiveInt Time TimeInterval);
 
-use namespace::autoclean;
+use namespace::autoclean -also =>
+  [qw(PositiveMillicents is_PositiveMillicents to_PositiveMillicents
+      PositiveInt is_PositiveInt to_PositiveInt Time is_Time to_Time
+      TimeInterval is_TimeInterval to_TimeInterval)];
 
 # We charge by usage, not by time in any way, so even if we're active and get a
 # heartbeat, we do not need to do a charge then. -- rjbs, 2012-05-16

@@ -14,6 +14,10 @@ use Stick::Types qw(StickBool);
 with ('Moonpig::Role::HandlesEvents');
 requires 'calculate_charge_structs_on';
 
+use namespace::autoclean -also =>
+  [qw(Time is_Time to_Time TimeInterval is_TimeInterval
+      to_TimeInterval StickBool is_StickBool to_StickBool)];
+
 # Last time I charged
 has last_charge_date => (
   is   => 'rw',

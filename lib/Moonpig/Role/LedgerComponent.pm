@@ -11,7 +11,7 @@ use Moonpig::Types qw(Ledger);
 use Moonpig::Behavior::EventHandlers;
 use Moonpig::Behavior::Packable;
 
-use namespace::autoclean;
+use namespace::autoclean -also => [ qw(Ledger is_Ledger) ];
 
 has ledger => (
   is   => 'ro',

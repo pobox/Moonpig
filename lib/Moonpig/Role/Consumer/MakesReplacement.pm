@@ -5,6 +5,8 @@ use Moonpig::Logger '$Logger';
 use Moonpig::Types qw(TimeInterval);
 use Moonpig::Util qw(event);
 
+use namespace::autoclean -also => [qw(TimeInterval is_TimeInterval to_TimeInterval)];
+
 requires 'remaining_life';
 requires 'will_die_soon';
 
