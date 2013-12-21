@@ -42,7 +42,7 @@ like(
 
 like(
   exception { $now_epoch - $x },
-  qr/no 'epoch' method/,
+  qr/X has neither 'as_seconds' nor 'epoch' method/,
   '$dt - $x; $x needs ->epoch',
 );
 
@@ -77,8 +77,8 @@ my $birthday = Moonpig::DateTime->new(
 
 my $iso = '1978-07-20 05:00:32';
 
-is($birthday->iso, $iso, '->iso formatter works');
+is($birthday->st, $iso, '->st formatter works');
 
-is($birthday->TO_JSON, $birthday->iso, "->TO_JSON is just ->iso");
+is($birthday->TO_JSON, $birthday->st, "->TO_JSON is just ->st");
 
 done_testing;

@@ -141,8 +141,8 @@ test "import a ledger via the web" => sub {
       $self->assert_n_deliveries($expected_dunnings, "dunning");
 
       is(
-        $last_unexpired_date->iso,
-        $exp_date->iso,
+        $last_unexpired_date->st,
+        $exp_date->st,
         "predicted chain expiration date was correct",
       );
     });
