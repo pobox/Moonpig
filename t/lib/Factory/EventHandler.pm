@@ -1,5 +1,6 @@
 package t::lib::Factory::EventHandler;
 use Moose::Role;
+use Class::Load ();
 
 use String::RewritePrefix;
 
@@ -15,7 +16,7 @@ sub make_event_handler {
     },
     $moniker,
   );
-  Class::MOP::load_class($class);
+  Class::Load::load_class($class);
 
   return $class->new(defined $arg ? $arg : ());
 }

@@ -6,7 +6,7 @@ package Moonpig::Test::Factory;
 use Moonpig::Test::Factory::Templates; # default testing template set
 
 use Carp qw(confess croak);
-use Class::MOP ();
+use Class::Load ();
 use Data::GUID qw(guid_string);
 use Scalar::Util qw(blessed);
 
@@ -325,7 +325,7 @@ sub build_consumer {
     croak "Arguments for consumer '$name' have both 'class' and 'template'\n"
       if $template;
 
-    Class::MOP::load_class($class);
+    Class::Load::load_class($class);
     $consumer = $stuff->{ledger}->add_consumer(
       $class,
       { xid => "test:consumer:$name",
