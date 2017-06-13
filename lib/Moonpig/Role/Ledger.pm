@@ -6,6 +6,7 @@ use 5.12.0;
 use Carp qw(confess croak);
 use Moose::Role;
 
+use Class::Load ();
 use Email::MessageID;
 use Sort::ByExample ();
 use Sys::Hostname::Long;

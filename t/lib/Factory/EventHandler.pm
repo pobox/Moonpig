@@ -1,5 +1,6 @@
 package t::lib::Factory::EventHandler;
 use Moose::Role;
+use Class::Load ();
 
 use String::RewritePrefix;
 

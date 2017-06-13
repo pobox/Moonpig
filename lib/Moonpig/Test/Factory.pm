@@ -6,7 +6,7 @@ package Moonpig::Test::Factory;
 use Moonpig::Test::Factory::Templates; # default testing template set
 
 use Carp qw(confess croak);
-use Class::MOP ();
+use Class::Load ();
 use Data::GUID qw(guid_string);
 use Scalar::Util qw(blessed);
 
