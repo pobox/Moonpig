@@ -81,13 +81,13 @@ schema:
     ledgers:
       name: ledgers
       fields:
-        guid: { name: guid, data_type: varchar, size: 36, is_primary_key: 1 }
-        entity_id: { name: entity_id, data_type: varchar, size: 36, is_nullable: 0 }
-        ident: { name: ident, data_type: varchar, size: 10, is_nullable: 0 }
-        serialization_version: { name: serialization_version, data_type: int unsigned, is_nullable: 0 }
-        frozen_ledger: { name: frozen_ledger, data_type: longblob, is_nullable: 0 }
-        frozen_classes: { name: frozen_classes, data_type: longblob, is_nullable: 0 }
-        archived_at: { name: archived_at, datatype: integer }
+        guid: { name: guid, data_type: varchar, size: 36, is_primary_key: 1, order: 1 }
+        entity_id: { name: entity_id, data_type: varchar, size: 36, is_nullable: 0, order: 2 }
+        ident: { name: ident, data_type: varchar, size: 10, is_nullable: 0, order: 3 }
+        serialization_version: { name: serialization_version, data_type: int unsigned, is_nullable: 0, order: 4 }
+        frozen_ledger: { name: frozen_ledger, data_type: longblob, is_nullable: 0, order: 5 }
+        frozen_classes: { name: frozen_classes, data_type: longblob, is_nullable: 0, order: 6 }
+        archived_at: { name: archived_at, datatype: integer, order: 7 }
       constraints:
         - type: UNIQUE
           fields: [ ident ]
@@ -96,8 +96,8 @@ schema:
     xid_ledgers:
       name: xid_ledgers
       fields:
-        xid: { name: xid, data_type: varchar, size: 256, is_primary_key: 1 }
-        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0 }
+        xid: { name: xid, data_type: varchar, size: 256, is_primary_key: 1, order: 1 }
+        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0, order: 2 }
       constraints:
         - type: FOREIGN KEY
           fields: [ ledger_guid ]
@@ -107,8 +107,8 @@ schema:
     all_xid_ledgers:
       name: all_xid_ledgers
       fields:
-        xid: { name: xid, data_type: varchar, size: 256, is_nullable: 0 }
-        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0 }
+        xid: { name: xid, data_type: varchar, size: 256, is_nullable: 0, order: 1 }
+        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0, order: 2 }
       constraints:
         - type:   PRIMARY KEY
           fields: [ xid, ledger_guid ]
@@ -120,9 +120,9 @@ schema:
     ledger_search_fields:
       name: ledger_search_fields
       fields:
-        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0 }
-        field_name: { name: field_name, data_type: varchar, size: 36, is_nullable: 0 }
-        field_value: { name: field_value, data_type: varchar, size: 128, is_nullable: 0 }
+        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0, order: 1 }
+        field_name: { name: field_name, data_type: varchar, size: 36, is_nullable: 0, order: 2 }
+        field_value: { name: field_value, data_type: varchar, size: 128, is_nullable: 0, order: 3 }
       constraints:
         - type: FOREIGN KEY
           fields: [ ledger_guid ]
@@ -133,19 +133,19 @@ schema:
     metadata:
       name: metadata
       fields:
-        one: { name: one, data_type: int unsigned, is_primary_key: 1 }
-        schema_md5: { name: schema_md5, data_type: varchar, size: 32, is_nullable: 0 }
-        last_realtime: { name: last_realtime, data_type: integer, is_nullable: 0 }
-        last_moontime: { name: last_moontime, data_type: integer, is_nullable: 0 }
+        one: { name: one, data_type: int unsigned, is_primary_key: 1, order: 1 }
+        schema_md5: { name: schema_md5, data_type: varchar, size: 32, is_nullable: 0, order: 2 }
+        last_realtime: { name: last_realtime, data_type: integer, is_nullable: 0, order: 3 }
+        last_moontime: { name: last_moontime, data_type: integer, is_nullable: 0, order: 4 }
 
     jobs:
       name: jobs
       fields:
-        id: { name: id, data_type: integer, is_auto_increment: 1, is_primary_key: 1 }
-        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0 }
-        type: { name: type, data_type: text, is_nullable: 0 }
-        created_at: { name: created_at, data_type: integer, is_nullable: 0 }
-        locked_at: { name: locked_at, data_type: integer, is_nullable: 1 }
+        id: { name: id, data_type: integer, is_auto_increment: 1, is_primary_key: 1, order: 1 }
+        ledger_guid: { name: ledger_guid, data_type: varchar, size: 36, is_nullable: 0, order: 2 }
+        type: { name: type, data_type: text, is_nullable: 0, order: 3 }
+        created_at: { name: created_at, data_type: integer, is_nullable: 0, order: 4 }
+        locked_at: { name: locked_at, data_type: integer, is_nullable: 1, order: 5 }
       constraints:
         - type: FOREIGN KEY
           fields: [ ledger_guid ]
@@ -155,9 +155,9 @@ schema:
     job_receipts:
       name: job_receipts
       fields:
-        job_id: { name: job_id, data_type: integer, is_primary_key: 1 }
-        terminated_at: { name: terminated_at, data_type: integer, is_nullable: 0 }
-        termination_state: { name: termination_state, data_type: varchar, size: 32, is_nullable: 1 }
+        job_id: { name: job_id, data_type: integer, is_primary_key: 1, order: 1 }
+        terminated_at: { name: terminated_at, data_type: integer, is_nullable: 0, order: 2 }
+        termination_state: { name: termination_state, data_type: varchar, size: 32, is_nullable: 1, order: 3 }
       constraints:
         - type: FOREIGN KEY
           fields: [ job_id ]
@@ -171,9 +171,9 @@ schema:
     job_documents:
       name: job_documents
       fields:
-        job_id: { name: job_id, data_type: integer, is_nullable: 0 }
-        ident: { name: ident, data_type: varchar, size: 64, is_nullable: 0 }
-        payload: { name: payload, data_type: longtext, is_nullable: 0 }
+        job_id: { name: job_id, data_type: integer, is_nullable: 0, order: 1 }
+        ident: { name: ident, data_type: varchar, size: 64, is_nullable: 0, order: 2 }
+        payload: { name: payload, data_type: longtext, is_nullable: 0, order: 3 }
       constraints:
         - type:   PRIMARY KEY
           fields: [ job_id, ident ]
@@ -186,10 +186,10 @@ schema:
     job_logs:
       name: job_logs
       fields:
-        id: { name: id, data_type: integer, is_auto_increment: 1, is_primary_key: 1 }
-        job_id: { name: job_id, data_type: integer, is_nullable: 0 }
-        logged_at: { name: logged_at, data_type: integer, is_nullable: 0 }
-        message: { name: message, data_type: text, is_nullable: 0 }
+        id: { name: id, data_type: integer, is_auto_increment: 1, is_primary_key: 1, order: 1 }
+        job_id: { name: job_id, data_type: integer, is_nullable: 0, order: 2 }
+        logged_at: { name: logged_at, data_type: integer, is_nullable: 0, order: 3 }
+        message: { name: message, data_type: text, is_nullable: 0, order: 4 }
       constraints:
         - type: FOREIGN KEY
           fields: [ job_id ]
